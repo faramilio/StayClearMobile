@@ -1,13 +1,10 @@
 import React from 'react'
-import {View, Text} from 'react-native'
 
-//nossas paginas
-import Login from './pages/Login'
-import Register from './pages/Register'
-
+//import routs
+import Routes from './routes'
 function App(){
     return(
-        <Login/>
+        <Routes/>
     )
 
 }

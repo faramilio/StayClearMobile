@@ -1,13 +1,22 @@
 import React from 'react'
 import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Image, Alert, ScrollView, Picker } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import RNPickerSelect from 'react-native-picker-select'
 import background from '../../pages/assets/background.png'
 import logo from '../../pages/assets/logo.png'
-function Register() {
+import Login from '../Login'
+function Register(props) {
     return (
         <ScrollView>
             <ImageBackground source={background} style={styles.background}>
+            <View style={{paddingRight:'85%'}}>
+            <TouchableOpacity onPress={()=> props.navigation.navigate('Login')}>
+            <Icon name="keyboard-return" size={50} color='#000'></Icon>
+            </TouchableOpacity>
+            <Text style={{paddingLeft: 8, marginTop: -15, marginBottom: -50}}>Voltar</Text>
+            </View>
                 <Image source={logo} style={styles.image}></Image>
+
                 <View style={styles.viewLogin}>
                     <TextInput placeholder='Digite seu nome' placeholderTextColor='#000000' style={styles.Input}></TextInput>
                     <TextInput placeholder='Seu e-mail@gmail.com' placeholderTextColor='#000000' style={styles.Input}></TextInput>
@@ -64,7 +73,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         backgroundColor: '#fff',
         borderRadius: 10,
-    }
+    },
 
 })
 

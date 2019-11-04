@@ -9,24 +9,24 @@ const botaoEsqueceuSenha = () => {
     Alert.alert('informar e-mail para envio da nova senha...  ')
 }
 
-function Login() {
+function Login(props) {
     return (
         <ScrollView style={styles.contentContainer}>
             <ImageBackground source={background} style={styles.background} >
                 <Image source={logo} style={styles.image}></Image>
                 <View style={styles.viewLogin}>
                     <View style={styles.sectionStyle}>
-                        <Icon name="mail-outline" size={30} color='#fff'></Icon>
+                        <Icon name="mail-outline" size={30} color='#fff' ></Icon>
                         <TextInput placeholder='Digite seu e-mail' placeholderTextColor='#fff' style={styles.Input}></TextInput>
                     </View>
-                    <View>
+                    <View style={styles.sectionStyle}>
                         <Icon name="lock-outline" size={30} color='#fff'></Icon>
                         <TextInput secureTextEntry={true} placeholder='Digite sua senha' placeholderTextColor='#fff' style={styles.Input}></TextInput>
                     </View>
                     <TouchableOpacity style={styles.button}>
                         <Text >Login</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Register')}>
                         <Text >Registrar</Text>
                     </TouchableOpacity>
                 </View>
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     },
     Input: {
         borderBottomColor: '#fff',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        width: '90%'
     },
     button: {
         backgroundColor: "#fff",
@@ -80,21 +81,13 @@ const styles = StyleSheet.create({
         padding: 6,
 
     },
-    contentContainer: {
-        flex: 1,
-    },
     sectionStyle: {
-        flex: 1,
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 5,
+        marginTop: -10,
+
     },
-    inconStyle: {
-        position: 'absolute',
-        paddingRight: 280,
-        resizeMode: 'stretch',
-        fontSize: 30
-    }
 
 })
 export default Login
