@@ -16,7 +16,6 @@ function Register(props) {
             <Text style={{paddingLeft: 8, marginTop: -15, marginBottom: -50}}>Voltar</Text>
             </View>
                 <Image source={logo} style={styles.image}></Image>
-
                 <View style={styles.viewLogin}>
                     <TextInput placeholder='Digite seu nome' placeholderTextColor='#000000' style={styles.Input}></TextInput>
                     <TextInput placeholder='Seu e-mail@gmail.com' placeholderTextColor='#000000' style={styles.Input}></TextInput>
@@ -43,15 +42,15 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         alignItems: 'center',
-        height: 700
+        height: 615
     },
     image: {
         width: 340,
         height: 300,
-        marginTop: 20
+        marginTop: 25
     },
     viewLogin: {
-        marginTop: 5,
+        marginTop: -5,
         padding: 10,
         width: '95%',
 

@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         alignItems: 'center',
-        height: 700
+        height: 615
 
     },
     viewLogin: {
-        marginTop: 40,
+        marginTop: 60,
         backgroundColor: '#2f3236',
         width: '95%',
         padding: 15,
@@ -65,16 +65,17 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         padding: 5,
         marginTop: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 10,
 
     },
     image: {
         width: 300,
         height: 270,
-        marginTop: 40
+        marginTop: 45
     },
     esqueceSenha: {
-        marginTop: 10,
+        marginTop: 5,
         color: '#000000',
         backgroundColor: 'transparent',
         textAlign: 'center',
