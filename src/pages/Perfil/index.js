@@ -1,20 +1,40 @@
 import React from 'react'
 import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Image, Alert, ScrollView, Picker } from 'react-native'
+import ImagePicker from 'react-native-image-picker' 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import perfil from '../../pages/assets/perfil.png'
 import background from '../../pages/assets/background.png'
 
-function Perfil(){
-    return(
+class Perfil extends React.Component{
+    //nosso state
+    state ={
+            avatar: perfil,
+            name: 'Anderson',
+            age: ' 26'
+
+        }
+        //alterando imagem do perfil
+        handlerchooseAvatar() {
+            this.setState({
+                name: 'Juninho ',
+                age: 28
+            })
+        }
+    render(){
+        //pegando o nosso avatar dentro do state
+        const {avatar, name, age} = this.state
+         return(
       
 <View>
     <ScrollView>
     <ImageBackground source={background} style={styles.background}>
-    <Image source={perfil} style={styles.image}>
-    </Image>
+        <Text>{name + age}</Text>
+        <TouchableOpacity onPress={() => this.handlerchooseAvatar ()}>
+               <Image source={avatar} style={styles.image}></Image>
+        </TouchableOpacity>
     <Text style={{padding: 10, marginTop: -5, fontSize: 25, fontWeight:'bold'}}>PERFIL PROFISSIONAL</Text>
     <View style={styles.textAreaContainer}>
-    <TextInput placeholder='Digite aqui o seu perfil' placeholderTextColor='#000000' style={styles.textArea} numberOfLines={10} multiline={true} ></TextInput>
+    <TextInput  placeholder='Digite aqui o seu perfil' placeholderTextColor='#000000' style={styles.textArea} numberOfLines={10} multiline={true} ></TextInput>
     </View>
     <Text style={{padding: 20, fontSize: 22, fontWeight:'bold'}}>Contato</Text>
     <View style={styles.sectionStyle}>
@@ -32,7 +52,9 @@ function Perfil(){
 </View>  
     )
 
-}
+}   
+    }
+
 const styles = StyleSheet.create({
     background: {
         flex: 1,
@@ -57,11 +79,11 @@ const styles = StyleSheet.create({
         borderColor: '#000',
         borderWidth: 1,
         padding: 1,
-        width: '80%'
+        width: '80%',
     },
     textArea: {
         height: 120,
-        justifyContent: "flex-start"
+        alignItems: 'flex-start',
     },
     sectionStyle: {
         flexDirection: 'row',
@@ -74,7 +96,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         width: "70%",
         textAlign: 'center',
-        right: 15    
+        right: 15
     }
     })
 
