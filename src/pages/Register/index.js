@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import RNPickerSelect from 'react-native-picker-select'
 import background from '../../pages/assets/background.png'
 import logo from '../../pages/assets/logo.png'
-import Login from '../Login'
 function Register(props) {
     return (
         <ScrollView>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Image, Alert, ScrollView, Picker } from 'react-native'
 import ImagePicker from 'react-native-image-picker' 
+
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import perfil from '../../pages/assets/perfil.png'
 import background from '../../pages/assets/background.png'
@@ -8,29 +9,48 @@ import background from '../../pages/assets/background.png'
 class Perfil extends React.Component{
     //nosso state
     state ={
-            avatar: perfil,
-            name: 'Anderson',
-            age: ' 26'
-
+        //ele, ira armazenar o caminho nosso avatar ni smartphone
+        Photo: ''
         }
         //alterando imagem do perfil
         handlerchooseAvatar() {
-            this.setState({
-                name: 'Juninho ',
-                age: 28
-            })
+            ImagePicker.showImagePicker(response => {
+  console.log('Response = ', response);
+
+  if (response.didCancel) {
+    console.log('User cancelled image picker');
+  } else if (response.error) {
+    console.log('ImagePicker Error: ', response.error);
+  } else if (response.customButton) {
+    console.log('User tapped custom button: ', response.customButton);
+  } else {
+    const source = { uri: response.uri };
+
+    // You can also display the image using data:
+    // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+    this.setState({
+      Photo: source,
+    });
+  }
+});
         }
     render(){
         //pegando o nosso avatar dentro do state
-        const {avatar, name, age} = this.state
+        const {Photo} = this.state
          return(
       
 <View>
     <ScrollView>
     <ImageBackground source={background} style={styles.background}>
-        <Text>{name + age}</Text>
         <TouchableOpacity onPress={() => this.handlerchooseAvatar ()}>
-               <Image source={avatar} style={styles.image}></Image>
+            {
+                Photo ? (
+                    <Image source={Photo} style={styles.image}></Image>
+                ) : (
+                    <Image source={perfil} style={styles.image}></Image>
+                )
+            }
         </TouchableOpacity>
     <Text style={{padding: 10, marginTop: -5, fontSize: 25, fontWeight:'bold'}}>PERFIL PROFISSIONAL</Text>
     <View style={styles.textAreaContainer}>
@@ -64,7 +84,7 @@ const styles = StyleSheet.create({
     image: {
         width: 240,
         height: 240,
-        marginTop: 20,
+        marginTop: 5,
         borderRadius: 200
     },
     button: {
