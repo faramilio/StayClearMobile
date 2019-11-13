@@ -41,6 +41,12 @@ class Perfil extends React.Component{
          return(
       
 <View>
+    <View>
+        <Icon name='home' size={45}></Icon>
+    </View>
+    <View>
+    <Icon name='user-plus' size={45}></Icon>
+    </View>
     <ScrollView>
     <ImageBackground source={background} style={styles.background}>
         <TouchableOpacity onPress={() => this.handlerchooseAvatar ()}>
@@ -82,9 +88,9 @@ const styles = StyleSheet.create({
         height: 615
     },
     image: {
-        width: 240,
-        height: 240,
-        marginTop: 5,
+        width: 200,
+        height: 200,
+        marginTop: 20,
         borderRadius: 200
     },
     button: {

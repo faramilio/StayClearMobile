@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Perfil from './pages/Perfil'
 import Friends from './pages/Friends'
+import AddFriends from './pages/AddFriends'
 
 
  const routes = createAppContainer(
@@ -12,6 +13,8 @@ import Friends from './pages/Friends'
      Perfil,
      Login,
      Register,
-    },{initialRouteName: 'Perfil'}) 
+     AddFriends,
+    
+    },{initialRouteName: 'AddFriends'}) 
  )
  export default routes
