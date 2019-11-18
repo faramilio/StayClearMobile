@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, Image, Alert, ScrollView, Picker } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import RNPickerSelect from 'react-native-picker-select'
-import background from '../../pages/assets/background.png'
-import logo from '../../pages/assets/logo.png'
+import background from '../../assets/background.png'
+import logo from '../../assets/logo.png'
 function Register(props) {
     return (
         <ScrollView>

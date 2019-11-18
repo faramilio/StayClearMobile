@@ -3,8 +3,8 @@ import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, I
 import ImagePicker from 'react-native-image-picker' 
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import perfil from '../../pages/assets/perfil.png'
-import background from '../../pages/assets/background.png'
+import perfil from '../../assets/perfil.png'
+import background from '../../assets/background.png'
 
 class Perfil extends React.Component{
     //nosso state

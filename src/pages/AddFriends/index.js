@@ -3,8 +3,8 @@ import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, I
 import IconAwesome from 'react-native-vector-icons/FontAwesome'
 import IconIcons from 'react-native-vector-icons/MaterialIcons'
 import Iconcomunity from 'react-native-vector-icons/MaterialCommunityIcons'
-import perfil from '../../pages/assets/perfil.png'
-import background from '../../pages/assets/background.png'
+import perfil from '../../assets/perfil.png'
+import background from '../../assets/background.png'
 
 class AddFriends extends React.Component {
     render() {
