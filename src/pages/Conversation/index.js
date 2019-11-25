@@ -23,7 +23,7 @@ const DATA = [{
 {
     id: 4,
     avatar: 'https://myrealdomain.com/images/imagens-png-4.png',
-    name: 'Kaque ovo',
+    name: 'Kaique ovo',
     msg: 'bora pro alma amanha toma umas?'
 },
 {

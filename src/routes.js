@@ -18,6 +18,6 @@ import Conversation from './pages/Conversation'
      Conversation,
 
     
-    },{initialRouteName: 'Conversation'}) 
+    },{initialRouteName: 'Register'}) 
  )
  export default routes
