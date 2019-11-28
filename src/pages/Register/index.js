@@ -4,46 +4,67 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import RNPickerSelect from 'react-native-picker-select'
 import background from '../../assets/background.png'
 import logo from '../../assets/logo.png'
+import Axios from 'axios'
+import Error from '../../components/Error'
+
+
 class Register extends React.Component {
     state = {
+        user: {
         name: '',
         email: '',
         password: '',
         category: '',
+        },
+        error: false,
+        errorText: ''
+        
+
     }
-    handleSubmid = () => {
-        Alert.alert('usuario Cadastrado', `seu nome é: ${this.state.nome} seu email é: ${this.state.email}, e sua categoria é: ${this.state.category} `)
+    handleSubmid = async () => {
+        const { data } = await Axios.post('http://10.51.47.63:3000/users', this.state.user)
+
+        //verifica se foi retorna um error do nosso backend
+        if(data.error){
+            this.setState({error: true, errorText: data.error})
+        }
     }
-    render (){
+    render() {
+        const {error, errorText} = this.state
         return (
-        <ScrollView>
-            <ImageBackground source={background} style={styles.background}>
-            <View style={{paddingRight:'85%'}}>
-            <TouchableOpacity onPress={()=> this.props.navigation.navigate('Login')}>
-            <Icon name="keyboard-return" size={50} color='#000'></Icon>
-            </TouchableOpacity>
-            </View>
-                <Image source={logo} style={styles.image}></Image>
-                <View style={styles.viewLogin}>
-                    <TextInput placeholder='Digite seu nome' placeholderTextColor='#000000' onChangeText={(text) => this.setState({nome: text})} style={styles.Input}></TextInput>
-                    <TextInput placeholder='Seu e-mail@gmail.com' placeholderTextColor='#000000' onChangeText={(text) => this.setState({email: text})} style={styles.Input}></TextInput>
-                    <TextInput secureTextEntry={true} placeholder='Digite sua Senha' placeholderTextColor='#000000' onChangeText={(text) => this.setState({password: text})} style={styles.Input}></TextInput>
-                    <View style={styles.picker}>
-                        <RNPickerSelect
-                            onValueChange={(value) => this.setState({category: value})}
-                            items={[
-                                { label: 'Desenvolvedor', value: 'Desenvolvedor' },
-                                { label: 'PHP', value: 'PHP' },
-                                { label: 'Python', value: 'Python' },
-                            ]} />
+            <ScrollView>
+                <ImageBackground source={background} style={styles.background}>
+                    <View style={{ paddingRight: '85%' }}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+                            <Icon name="keyboard-return" size={50} color='#000'></Icon>
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.button} onPress={()=> this.handleSubmid()}>
-                        <Text style={{ color: '#fff' }}>Cadastrar</Text>
-                    </TouchableOpacity>
-                </View>
-            </ImageBackground>
-        </ScrollView>
-    )
+                    <Image source={logo} style={styles.image}></Image>
+                    {
+                        error &&  
+                        <Error icon='error' text={errorText} />
+                    }
+                  
+                    <View style={styles.viewLogin}>
+                        <TextInput placeholder='Digite seu nome' placeholderTextColor='#000000' onChangeText={(text) => this.setState({user:{ ...this.state.user, name:text }})} style={styles.Input}></TextInput>
+                        <TextInput placeholder='Seu e-mail@gmail.com' placeholderTextColor='#000000' onChangeText={(text) => this.setState({user: { ...this.state.user, email: text }})} style={styles.Input}></TextInput>
+                        <TextInput secureTextEntry={true} placeholder='Digite sua Senha' placeholderTextColor='#000000' onChangeText={(text) => this.setState({user:{...this.state.user, password: text }})} style={styles.Input}></TextInput>
+                        <View style={styles.picker}>
+                            <RNPickerSelect
+                                onValueChange={(value) => this.setState({user: {...this.state.user, category: value }})}
+                                items={[
+                                    { label: 'Desenvolvedor', value: 'Desenvolvedor' },
+                                    { label: 'PHP', value: 'PHP' },
+                                    { label: 'Python', value: 'Python' },
+                                ]} />
+                        </View>
+                        <TouchableOpacity style={styles.button} onPress={() => this.handleSubmid()}>
+                            <Text style={{ color: '#fff' }}>Cadastrar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ImageBackground>
+            </ScrollView>
+        )
 
 }}
 const styles = StyleSheet.create({

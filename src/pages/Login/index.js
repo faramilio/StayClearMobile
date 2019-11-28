@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 //importando imagem
 import background from '../../assets/background.png'
 import logo from '../../assets/logo.png'
+import Error from '../../components/Error'
 
 const botaoEsqueceuSenha = () => {
     Alert.alert('informar e-mail para envio da nova senha...  ')
@@ -14,6 +15,7 @@ function Login(props) {
         <ScrollView style={styles.contentContainer}>
             <ImageBackground source={background} style={styles.background} >
                 <Image source={logo} style={styles.image}></Image>
+                <Error icon='error' text='usuário já cadastrado' />
                 <View style={styles.viewLogin}>
                     <View style={styles.sectionStyle}>
                         <Icon name="mail-outline" size={30} color='#fff' ></Icon>
