@@ -21,6 +21,7 @@ class Register extends React.Component {
         
 
     }
+    // responsavel pelo nosso login
     handleSubmid = async () => {
         const { data } = await Axios.post('http://10.51.47.63:3000/users', this.state.user)
 
@@ -65,8 +66,8 @@ class Register extends React.Component {
                 </ImageBackground>
             </ScrollView>
         )
-
-}}
+    }
+}
 const styles = StyleSheet.create({
     background: {
         flex: 1,
