@@ -33,7 +33,6 @@ class Login extends React.Component {
         //passando os dados do usuário para armazenar no local storage
         if(data.token) {
         this.SetStorage (data)
-        this.props.navigation.navigate('Perfil')  
         }
    
 
@@ -46,7 +45,8 @@ class Login extends React.Component {
     //armazenar dados do nosso usuario no local storage 
     SetStorage = async (data) => {
         //armazena nossos dados dentro do key @user
-        await AsyncStorage.setItem('@users', data)
+        await AsyncStorage.setItem('user', JSON.stringify(data) )
+        this.props.navigation.navigate('Perfil')
     }
 
 
@@ -93,7 +93,7 @@ class Login extends React.Component {
         background: {
             flex: 1,
             alignItems: 'center',
-            height: 615
+            height: 720
 
         },
         viewLogin: {
